@@ -1,0 +1,20 @@
+Hi ${profile.realname}!
+
+Thank you for signing up for ${site_name}!
+
+You username is ${user.username}
+
+Log in at ${request.application_url}
+
+Please verify your email address. Doing so will
+help us maintain the security of your account.
+To verify your email address, use the following link: ${verify_href}
+
+Sincerely,
+SkillsUSA
+
+Need Help? Contact SkillsUSA’s Customer Care Team
+customercare@skillsusa.org | (844) 875-4557
+
+If you feel this email was sent in error, or this account was created
+without your consent, you may email us at ${support_email}.

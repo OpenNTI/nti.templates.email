@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:metal="http://xml.zope.org/namespaces/metal"
+	  xmlns:tal="http://xml.zope.org/namespaces/tal"
+	  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+	  i18n:domain="nti.dataserver"
+	  i18n:source="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Welcome To NextThought</title>
+	</head>
+	<body>
+		<div class="header" metal:define-macro="header">
+			<div id="green-bar" class="brand-color-bar" style="background-color: ${options/nti_site_brand_color | string:#3FB34F}; width: 100%; height: 3px;"></div>
+			<div id="logo-bar">
+				<img src="https://d1pjt1z9p2xsq0.cloudfront.net/S1f3dc147fe0f4d5eae2e3ec7f63407f8/770e590a3d770c28b72a689e20fe2147.png"
+					 alt="SkillsUSA Logo"
+					 height="84" style="max-width: none"
+					 tal:attributes="alt options/nti_site_brand_name|default" />
+			</div>
+		</div>
+
+		<div metal:define-macro="site_invitation_brand_message">
+			<div class="site_invitation_brand_message" style="
+                                       color: #494949; font-size: 14px;
+                                       text-align: left; margin-top: 15px;">
+				<span>You’ve been invited to
+					<omitted tal:content="options/brand|default">SkillsUSA</omitted>,
+					get started by clicking the button below or copying and pasting the URL into your browser.
+				</span>
+			</div>
+		</div>
+
+		<div class="footer" metal:define-macro="footer">
+			<div style="margin-top: 50px;text-align: center;font-size: 14px;font-weight: 600;line-height: 19px;letter-spacing: -0.8px;">
+				<div>
+					Need Help? Contact SkillsUSA’s Customer Care Team
+				</div>
+				<div>
+					customercare@skillsusa.org | (844) 875-4557
+				</div>
+			</div>
+
+			<hr style="margin: 8px auto; border:1px solid rgba(0,0,0,0.07);"/>
+			<div style="margin-top: 8px;font-size: 12px;line-height: 17px;">
+				<span i18n:translate="">
+					If you feel this email was sent in error, or this account was created
+					without your consent, you may email us at
+					<a i18n:name="support_email"
+					   href="mailto:support@nextthought.com"
+					   tal:content="options/support_email|default"
+					   tal:attributes="href string:mailto:${options/support_email|default}"
+					   style="text-decoration:underline;color: #494949;">support@nextthought.com</a>
+				</span>
+			</div>
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:metal="http://xml.zope.org/namespaces/metal"
+		xmlns:tal="http://xml.zope.org/namespaces/tal">
+
+	<head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <title>You're Invited!</title>
+        <!--  Apple mail compatibility -->
+        <style>
+            a[x-apple-data-detectors] {
+                color: inherit !important;
+                text-decoration: none !important;
+                font-size: inherit !important;
+                font-family: inherit !important;
+                font-weight: inherit !important;
+                line-height: inherit !important;
+                }
+            .site-link a{
+                color: #b8b8b8 !important;
+                text-decoration: none !important;
+                font-size: 14px;
+                line-height: 20px;
+            }
+            .header {
+                width: 100%;
+            }
+            #logo-bar {
+                width: calc(100% - 10px);
+                max-width: 610px;
+                padding: 0 5px;
+                margin: 47px auto 20px;
+            }
+            .footer {
+                width: calc(100% - 10px);
+                max-width: 610px;
+                padding: 0 5px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <!-- For speed when sending large amounts of emails interactively, all styles are inlined below -->
+	<body style="padding-top: 20px;padding-bottom: 20px;background-color: #F9F9F9; color: #494949; font-family: 'Open Sans', sans-serif, Helvetica, Arial; font-size: 16px; line-height: 24px;">
+    <div class="container" style="width:100%;max-width: 730px; margin: 0 auto; background-color: #FFFFFF; padding-bottom: 50px;">
+        <div metal:use-macro="macro:header"></div>
+        <div class="main" style="width:calc(100% - 10px);max-width: 610px;margin: 0 auto;padding: 0 5px;">
+            <!-- You're invited -->
+            <div tal:condition="options/tagline" metal:use-macro="macro:site_invitation_tagline"></div>
+
+            <div tal:condition="not:options/tagline">
+                <div class="tagline" style="color: #494949; font-size: 36px; font-weight: 300;line-height:36px;
+                                            text-align: left; margin-top: 30px; padding: 0;">
+                    <span>You're invited</span>
+                </div>
+            </div>
+
+            <!-- Brand invitation message -->
+            <div tal:condition="options/brand_message" metal:use-macro="macro:site_invitation_brand_message"></div>
+
+            <div tal:condition="not:options/brand_message">
+                <div class="brand-message" style="
+                           color: #494949; font-size: 14px;
+                           text-align: left; margin-top: 20px;">
+                <span>Get started learning on an interactive online platform
+                    like no other by clicking the button below
+                    or copying and pasting the URL into your browser.</span>
+                </div>
+            </div>
+
+            <div class="brand-message" style="
+                           color: #494949; font-size: 14px;
+                           text-align: left; margin-top: 15px;">
+                <span>NOTE: This invitation is unique to you and will NOT work if shared with others.</span>
+            </div>
+
+            <!-- redeem button -->
+            <div class="site-but-cont" style="margin-top:20px; margin-left: 0; margin-right: 0" tal:condition="options/redemption_link">
+                <a 	href="https://www.nextthought.com" class="but"
+                    tal:attributes="href python: options['redemption_link']"
+                    style='color:white; text-decoration:none; background-color:#3fb3f6; border-radius:4px;
+                           border-style:none; font-size:14px; font-weight:600;
+                           margin-bottom:15px; outline:none; text-align: center; line-height: 19px;
+                           padding: 8px 16px'>
+                            Accept Invitation
+                </a>
+            </div>
+
+            <!-- redeem link -->
+            <div class="site-link-cont" style="display: inline-block; margin-top: 20px; margin-left: 0; margin-right: 0;" tal:condition="options/redemption_link">
+                <span class="site-link">
+                    <a tal:content="options/redemption_link">
+                        https://www.nextthought.com
+                    </a>
+                </span>
+            </div>
+
+            <!-- Sender message -->
+            <div class="sender-message-cont" style="margin-top: 25px; margin-left: 0; margin-right: 0;line-height: 20px;" tal:condition="options/sender_content">
+                <hr style="margin-top:18px; border:1px solid rgba(0,0,0,0.07); border-bottom:0;">
+
+                <div class="sender-header" style="margin-top: 24px; margin-bottom: 24px;">
+                    <div id="avatar" tal:attributes='style options/sender_content/avatar_styles'></div>
+                    <span class="avatar-descriptor" style="margin-left: 10px; color: #757474; font-size: 14px; line-height: 19px;">
+                        A message from
+                    </span>
+                    <br>
+                    <span class="site-inv-sender" style="color: #494949; margin-left: 10px;
+                     font-size: 15px; line-height: 22px;" tal:content="options/sender_content/sender">
+                        Steve Johnson
+                    </span>
+
+                </div>
+
+              <q class="site-inv-message" tal:content="options/sender_content/message"
+                  style="font-size:16px; color:#757474;
+                  line-height:24px; font-style: italic;">
+                  We are starting to conduct all our training online through NextThought. I'm excited to have you onboard.
+              </q>
+            </div>
+
+            <!-- Site custom image -->
+            <div tal:condition="options/custom_image_macro" metal:use-macro="macro:site_invitation_image"></div>
+        </div>
+        <div metal:use-macro="macro:footer"></div>
+    </div>
+	</body>
+</html>

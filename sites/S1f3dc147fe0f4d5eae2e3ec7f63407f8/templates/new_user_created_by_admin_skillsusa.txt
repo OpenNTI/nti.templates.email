@@ -1,0 +1,28 @@
+Hi ${profile.realname}!
+
+A new account has been created for you on ${site_name}!
+
+Your username is ${user.username}
+
+Step 1:
+
+Use the following link to set up your account: ${set_passcode_url}.
+
+After you've set up your account, please use ${request.application_url} to
+log in to access your Career Competition Event.
+
+
+Step 2:
+
+Please use the link below to verify your email address.
+Doing so will help us maintain the security of your account.
+
+${verify_href}
+
+Sincerely,
+SkillsUSA
+
+Need Help? Contact SkillsUSA’s Customer Care Team
+customercare@skillsusa.org | (844) 875-4557
+
+If you feel this email was sent in error, you may email us at ${support_email}.
