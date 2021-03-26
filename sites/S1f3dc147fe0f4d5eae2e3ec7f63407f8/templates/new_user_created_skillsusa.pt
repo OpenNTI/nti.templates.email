@@ -26,8 +26,7 @@
 			<div class="mp-20" i18n:translate="">
 				Your username is <span tal:content="options/user/username" class="tterm-color">username</span>
 				<br/>
-				Log in at <a href="http://nextthought.com" tal:attributes="href request/application_url"
-							 tal:content="request/application_url">http://nextthought.com</a>
+				Log in at <a href="https://compete.skillsusa.com">https://compete.skillsusa.com</a>
 			</div>
 
 			<div tal:condition="options/verify_href">

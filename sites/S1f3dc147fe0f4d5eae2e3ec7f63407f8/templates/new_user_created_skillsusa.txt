@@ -4,7 +4,7 @@ Thank you for signing up for ${site_name}!
 
 You username is ${user.username}
 
-Log in at ${request.application_url}
+Log in at https://compete.skillsusa.com
 
 Please verify your email address. Doing so will
 help us maintain the security of your account.

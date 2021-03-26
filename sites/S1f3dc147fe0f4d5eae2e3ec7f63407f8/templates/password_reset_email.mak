@@ -1,7 +1,7 @@
 Hello ${user.username}.
 
 You are receiving this notification because you (or someone pretending
-to be you) requested your ${request.application_url} password be reset for
+to be you) requested your SkillsUSA Championships Hub password be reset for
 ${user.username}.
 
 %if not external_reset_url:
