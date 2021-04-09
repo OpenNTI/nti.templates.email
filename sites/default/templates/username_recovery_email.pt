@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:metal="http://xml.zope.org/namespaces/metal"
+	  xmlns:tal="http://xml.zope.org/namespaces/tal">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Username Reminder</title>
+		<style metal:use-macro="macro:style"></style>
+	</head>
+	<body>
+	<div class="container">
+		<div metal:use-macro="macro:header"></div>
+		<div class="main">
+			<div class="title">
+				Hello <span tal:content="python: options['users'][0].username">username</span>.
+			</div>
+			<div class="mp-20">
+				You are receiving this notification because you (or someone pretending to be you)
+				requested a reminder of your <a href="http://nextthought.com"
+					tal:attributes="href request/application_url"
+					tal:content="request/application_url">http://nextthought.com</a> username.
+			</div>
+			<div class="mp-20">
+				We found the following usernames associated with this email address:
+			</div>
+			<ul>
+				<li tal:repeat="user options/users"
+					class="tterm-color"
+					tal:content="user/username" />
+			</ul>
+			<div class="mp-20">
+				If you did not make this request, you can safely disregard this email.
+			</div>
+			<div>
+				For help, you can email us at <a href="mailto:support@nextthought.com"
+					tal:attributes="href string:mailto:${options/support_email|default}"
+					tal:content="options/support_email">support@nextthought.com</a>.
+			</div>
+		</div>
+	</div> <!-- end of main-->
+	</body>
+</html>

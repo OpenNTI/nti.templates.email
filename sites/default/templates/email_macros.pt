@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:metal="http://xml.zope.org/namespaces/metal"
+	  xmlns:tal="http://xml.zope.org/namespaces/tal">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>NextThought</title>
+		<metal:block metal:define-macro="style">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+		<style>
+			body {
+				background-color: #F9F9F9;
+				color: #494949;
+				font-family: 'Open Sans', sans-serif, Helvetica, Arial;
+				font-size: 16px;
+				line-height: 24px;
+				padding-top: 20px;
+				padding-bottom: 20px;
+			}
+			.normal-text {
+				margin-left: 30px;
+				margin-right: 0px;
+				padding-top: 0px;
+				padding-bottom: 0px;
+			}
+			.normal-text #green-bar {
+				background-color: #3FB34F;
+				margin-left:-30px;
+				padding-left:30px;
+			}
+			.normal-text #logo-bar {
+				margin-top: 20px;
+				margin-bottom: 30px;
+			}
+			.container {
+				width:100%;
+				max-width: 730px;
+				margin: 0 auto;
+				background-color: #FFFFFF;
+				padding-bottom: 50px;
+			}
+			.container .header {
+				width: 100%;
+			}
+			.container .header #logo-bar {
+				width: calc(100% - 10px);
+				max-width: 610px;
+				padding: 0 5px;
+				margin: 47px auto 20px;
+			}
+			.container .main,
+			.container .footer {
+				width: calc(100% - 10px);
+				max-width: 610px;
+				padding: 0 5px;
+				margin: 0 auto;
+			}
+			.container p {
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+			a {
+				text-decoration: none;
+				color: #3FB3F6;
+			}
+			.title {
+				font-size: 26px;
+				line-height: 36px;
+				font-weight: 600;
+				letter-spacing: -0.5px;
+			}
+			.btn-link {
+				padding: 8px 16px;
+				font-size: 15px;
+				font-weight: 600;
+				line-height: 20px;
+				color: #FFFFFF;
+				background-color: #3FB34F;
+				border-radius: 4px;
+				text-decoration: none;
+			}
+			.mp-20  {
+				margin-top: 20px;
+			}
+			.tterm, strong {
+				font-weight: 600;
+				color: #494949;
+			}
+			.tterm-color {
+				font-weight: 600;
+				color: #3FB3F6;
+			}
+
+			table, th, td {
+				border-collapse: collapse;
+				margin-left: 30px;
+			}
+			table.solid {
+				border-collapse: collapse;
+				width: 100%;
+				margin-left: 30px;
+				margin-right: 30px;
+				border: 1pt solid #EFEFEF;
+			}
+			th,td {
+				padding: 15px;
+			}
+			td.left_column {
+				text-align: left;
+				width: 35%;
+			}
+			td.right_column {
+				text-align: left;
+				border: 1pt solid #EFEFEF;
+			}
+			tr.border_bottom td {
+				border-bottom:1pt solid #EFEFEF;
+			}
+			td.blue {
+				color: #3fb3f6;
+			}
+			tr{
+				vertical-align:top;
+				display:block;
+				border-bottom:solid #e2e5e7 1px;
+				color:#6d7d87;
+				font-weight:bold;
+				font-size:12px;
+				padding-top:11px;
+				padding-bottom:0px;
+				line-height:18px;
+				width: 100%;
+			}
+			tr.noborder {
+				vertical-align:top;
+				display:block;
+				color:#6d7d87;
+				border: 0;
+				border-bottom: 0;
+				font-weight:bold;
+				font-size:12px;
+				padding-top:0px;
+				padding-bottom:0px;
+				line-height:18px;
+				width: 100%;
+			}
+			tr.nested{
+				vertical-align:top;
+				display:block;
+				border-top:solid #e2e5e7 1px;
+				border-bottom:solid #e2e5e7 1px;
+				color:#6d7d87;
+				font-size:12px;
+				padding-top:0px;
+				padding-bottom:0px;
+				line-height:18px;
+				width: 100%;
+			}
+		</style>
+		</metal:block>
+	</head>
+	<body class="normal-text">
+		<div class="header" metal:define-macro="header">
+			<div id="green-bar" class="brand-color-bar" style="background-color: ${options/nti_site_brand_color | string:#3FB34F}; width: 100%; height: 3px;"></div>
+			<div id="logo-bar">
+				<img src="https://assets.nextthought.com/images/nextthought/platform/email/logo_trans_square.png"
+					 alt="NextThought Logo"
+					 height="40" style="max-width: none"
+				     tal:attributes="src options/nti_site_brand_email_image_url|default;
+				                     alt options/nti_site_brand_name|default" />
+			</div>
+			<!--! Flash messages -->
+			<div id="errors"
+					 tal:condition="python:getattr(request, 'session', None) is not None and request.session.peek_flash('errors')">
+				<h2>Errors</h2>
+				<ul>
+					<li tal:repeat="error python:request.session.pop_flash('errors')"
+						tal:content="error"
+						style="color: red">
+						An error.
+					</li>
+				</ul>
+			</div>
+			<div id="warn" tal:condition="python:getattr(request, 'session', None) is not None and request.session.peek_flash('warn')">
+				<h2>Warnings</h2>
+				<ul>
+					<li tal:repeat="warn python:request.session.pop_flash('warn')"
+						tal:content="warn"
+						style="color: red">
+						A warning.
+					</li>
+				</ul>
+			</div>
+			<div id="info" tal:condition="python:getattr(request, 'session', None) is not None and request.session.peek_flash()">
+				<h2>Info</h2>
+				<ul>
+					<li tal:repeat="info python:request.session.pop_flash()"
+						tal:content="info">
+						An info.
+					</li>
+				</ul>
+
+			</div>
+		</div>
+
+		<div class="footer" metal:define-macro="footer">
+			<hr style="margin-top:18px; border:1px solid rgba(0,0,0,0.07); border-bottom:0;"/>
+			<div style="margin-top: 18px;font-size: 12px;line-height: 17px;">
+				<span i18n:translate="">
+					If you feel this email was sent in error, or this account was created
+					without your consent, you may email us at
+					<a i18n:name="support_email"
+					href="mailto:support@nextthought.com"
+					tal:content="options/support_email|default"
+					tal:attributes="href string:mailto:${options/support_email|default}"
+					style="text-decoration:underline;color: #494949;">support@nextthought.com</a>
+				</span>
+				<br/>
+				<span i18n:translate="" tal:condition="python: options.get('nti_site_brand_name') and options['nti_site_brand_name']!='NextThought'">
+				    <omitted tal:replace="options/nti_site_brand_name"/> is powered by <a href="https://nextthought.com" style="text-decoration:underline;color: #494949;">NextThought</a>
+				</span>
+			</div>
+		</div>
+
+	</body>
+</html>
