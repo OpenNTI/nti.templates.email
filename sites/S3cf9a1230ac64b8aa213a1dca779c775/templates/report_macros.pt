@@ -10,10 +10,10 @@
 		  xmlns:metal="http://xml.zope.org/namespaces/metal">
 
 	<story firstPageTemplate="cover">
-		<image file="[nti.app.products.ou]/templates/ou_janux_email_tag_2.png"
-			   width="250"
-			   height="50"
-			   x="0.5in" y="7in"
+		<image file="/srv/assets/s3105ce059eb647ce981c0a90cb81992a/report_logo.png"
+			   width="185"
+			   height="100"
+			   x="0.5in" y="6.75in"
 			   align="left"
 			   tal:attributes="file options/nti_site_brand_email_image_url|default;
 				             alt options/nti_site_brand_name|default"
