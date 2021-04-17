@@ -10,7 +10,7 @@
 		  xmlns:metal="http://xml.zope.org/namespaces/metal">
 
 	<story firstPageTemplate="cover">
-		<image file="/srv/assets/s3105ce059eb647ce981c0a90cb81992a/report_logo.png"
+		<image file="/srv/assets/s3cf9a1230ac64b8aa213a1dca779c775/report_logo.png"
 			   width="185"
 			   height="100"
 			   x="0.5in" y="6.75in"
